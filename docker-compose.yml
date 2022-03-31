@@ -1,0 +1,20 @@
+version: "3.9"  # optional since v1.27.0
+services:
+
+  asr:
+    container_name: DeepSpeech
+    build:
+      context: ./
+      dockerfile: asr/Dockerfile
+    ports:
+      - "11111:8000"
+    volumes:
+      - ./asr:/source
+    networks:
+      - external
+
+networks:
+  internal:
+    internal: true
+  external:
+    internal: false
